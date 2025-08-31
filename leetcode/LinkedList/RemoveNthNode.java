@@ -1,0 +1,31 @@
+public class RemoveNthNode {
+  public class ListNode {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+  }
+ 
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode fast=head,slow=head;
+        int i=0;
+
+        while(i<n&&fast != null)
+        {
+            fast=fast.next;
+            i++;
+        }
+        if(fast==null) return head.next;
+        while(fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next;
+        }
+        slow.next=slow.next.next;
+        return head;
+       
+    }
+}
+
